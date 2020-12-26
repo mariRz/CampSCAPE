@@ -1,0 +1,66 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3> <%=user.firstname%> <%=user.lastname%> </h3>
+            <div class="thumbnail">
+                <img src="<%=user.avatar%>">
+                <p><a href="#"><%=user.email%></a></p>
+            </div>
+            <p>About <%=user.username%></p>
+            <p><%=user.aboutMe%></p>
+            <p>User profile created since <em><%=moment(user.createdAt).format("MMM Do YYYY")%></em></p>
+            <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin === true){ %>
+                <span class="pull-left"><a href="/users/<%=user._id%>/edit">Edit Profile</a></span>
+            <% } %>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="user-locations">
+                <h4>Campgrounds</h4>
+                <% if(campgrounds.length === 0){ %>
+                    <p>No campgrounds unploaded</p>
+                <% } %>
+                <p><a class="btn btn-primary btn-sm" href="../campgrounds/new">Add New Location</a></p>
+                <div class="row" style="display: flex; flex-wrap: wrap;">
+                    <% campgrounds.forEach(function(campground){ %>
+                    <div class="col-md-6 col-sm-9">
+                            <li style="list-style: none;"><a class="activity-hover" href="/campgrounds/<%=campground._id%>">
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="<%= campground.image %>">
+                                    
+                                    <div class="pull-right"><em><%=moment(campground.createdAt).fromNow()%></em></div>
+
+                                    <div class="caption" style="font-family:Verdana, Geneva, Tahoma, sans-serif;" >
+                                        <h4><%= campground.name %></h4>
+                                    </div>
+
+                                    <div style="padding: 9px">
+                                        <span class="pull-left">
+                                            <a class="btn btn-primary btn-sm" style="margin-bottom: 10px; left: 50%;" href="/campgrounds/<%= campground._id %>">Description</a>
+                                            <i class="activity-icon fas fa-campground" 
+                                            style="padding-left: 3px; font-size:23px;">
+                                            </i>
+                                        </span>
+
+                                        <span class="pull-right">
+                                            <% if(currentUser && currentUser._id.equals(campground.author.id) || currentUser && currentUser.isAdmin === true){ %>
+                                            <a class="btn btn-warning btn-xs" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                                            <form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                                <button class="btn btn-danger btn-xs">Delete Campground</button>
+                                            </form>                   
+                                            <% }; %>
+                                        </span> 
+                                    </div>
+                                </div>
+                            </a></li>
+                        </div>
+                    <% }); %>       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

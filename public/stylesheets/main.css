@@ -1,0 +1,65 @@
+body, html{
+    height:100%;
+    margin: 0;
+}
+.thumbnail img{
+    width: 100%;
+}
+
+.thumbnail{
+    padding: 0;
+}
+
+.acitvity-icon{
+    position: relative;
+    left:-20%; 
+    font-size:23px;
+}
+
+.description-btn{
+    margin-bottom: 10px;
+    position: relative;
+    left: 20%;
+}
+
+.caption-full{
+    padding: 5px;
+}
+
+.delete-form{
+    display: inline;
+}
+
+.page-content{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.adjust{
+    padding:20px;
+    height: 50px;
+}
+
+.footer{
+    padding: 15px;
+    height: 50px;
+    width:100%;
+    background-color: rgb(219, 219, 219);
+    margin-top: 10px;
+}
+
+.user-locations{
+    padding-top: 43px;
+}
+
+.user-locations ul{
+    list-style-type: none;
+}
+
+.jumbotron{
+    width: 98%;
+}
+
+.activity-hover:hover{
+    text-decoration: none;
+}

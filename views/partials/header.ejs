@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CampSCAPE</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-items" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                    <a class="navbar-brand" href="/">CampSCAPE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-items">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/campgrounds">Home <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(!currentUser){ %>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sign Up</a></li>
+                        <% } else{ %>
+                            <li>
+                                <a href="/users/<%= currentUser._id %>">
+                                    <% if(currentUser.isAdmin){ %>
+                                        Administrator 
+                                    <% } else { %>
+                                        Signed in as 
+                                    <% } %>
+                                    <%= currentUser.username %>
+                                </a>
+                            </li>
+                            <li><a href="/logout">Sign Out</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="page-content container">
+            <!-- flash error messages -->
+            <% if(error && error.length > 0){ %>
+            <div class="container">
+                <div class="alert alert-danger" role="alert">
+                    <%- error %>
+                </div>
+            </div>
+            <% console.log(error) }%>
+            <!-- flash success messages -->
+            <% if(success && success.length > 0){ %>
+            <div class="container">
+                <div class="alert alert-success" role="alert">
+                    <%- success %> 
+                </div>
+            </div>
+            <% console.log(success) }%>
+
+    
+
+

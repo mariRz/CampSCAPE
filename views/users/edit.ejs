@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <h2 style="text-align: center;">Edit User Profile</h2>
+        <div style="width: 30%; margin: 20px auto;">
+            <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+                <p><strong>First Name</strong></p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="user[firstname]" value="<%=user.firstname%>">
+                </div>
+                <p><strong>Last Name</strong></p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="user[lastname]" value="<%=user.lastname%>">
+                </div>
+                <p><strong>Email</strong></p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="user[email]" value="<%=user.email%>">
+                </div>
+                <p><strong>About Me</strong></p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="user[aboutMe]" value="<%=user.aboutMe%>">
+                </div>
+                <p><strong>Avatar Url</strong></p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="user[avatar]" value="<%=user.avatar%>">
+                </div>
+                
+                <div class="form-group">
+                    <input class="form-control btn-md btn btn-primary" type="submit" value="Update Profile">
+                </div>
+            </form>
+            <a href="/users/<%=user._id%>">Back</a>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,42 @@
+<%- include("../partials/header") %>
+
+    <div class="container">
+        <header class="jumbotron" style='padding-bottom: 30px'>
+                
+                <h1> <i class="activity-icon fas fa-campground" style="font-size: 60px"></i> CampSCAPE</h1>
+                <p><a class="btn btn-primary btn-md" href="/campgrounds/new">New Location</a></p>
+                <p><form action="/campgrounds" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Search..." class="form-control" style="height: 30px">
+                        <input type="submit" value="Search" class="btn btn-default btn-sm">
+                    </div>
+                </form></p>
+                <a href="/campgrounds">Explore All</a>
+        </header>
+    </div>
+
+<div class="container">
+    <div class="row text-center" style="display: flex;flex-wrap: wrap;padding-left: 15px;padding-right: 15px;">
+        <div class="col-md-12">
+            <% if(noMatchMsg !== undefined){ %>
+                <p><%= noMatchMsg %></p>
+            <% }; %>
+        </div>
+        <% campgrounds.forEach(function(campground){ %>
+            <div class="col-md-3 col-sm-6"> 
+                <div class="thumbnail">
+                    <img src="<%= campground.image %>">
+                    <div class="caption" style="font-family:Verdana, Geneva, Tahoma, sans-serif;" >
+                        <h4><%= campground.name %></h4>
+                    </div>
+                    <i class="activity-icon fas fa-campground" 
+                        style="position: relative; left:-20%; font-size:23px;">
+                    </i>
+                    <a class="btn btn-primary btn-sm" style="margin-bottom: 10px; position: relative; left: 20%;" href="/campgrounds/<%= campground._id %>">Description</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>  
+</div>
+
+<%- include("../partials/footer") %>
