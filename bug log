@@ -1,9 +1,0 @@
-Timestamp of added comments is not displaying. Should display date and time in the format hh:mm dd/mm/yyyy.
-Timestamp of added campgrounds is not displaying. Should display date and time in the format hh:mm dd/mm/yyyy.
-Side nav bar is not functioning.
-Back button should redirect to previous url rather than home page.
-Search feature is not implemented.
-Image upload feature is not implemented.
-User profile.
-Campground tile should display campground image, name, price and rating. 
-user ownership middleware function.
